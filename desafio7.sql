@@ -1,0 +1,13 @@
+SELECT DISTINCT a.ARTIST_NAME as artista,
+  ALBUNS.ALBUM_NAME AS album,
+COUNT(fa.ARTIST_ID) AS seguidores
+FROM SpotifyClone.ARTISTS as a
+
+INNER JOIN SpotifyClone.ALBUNS
+ON a.ARTIST_ID = ALBUNS.ARTIST_ID
+
+INNER JOIN SpotifyClone.FOLLOWING_ARTISTS AS fa
+ON fa.ARTIST_ID = a.ARTIST_ID
+
+GROUP BY artista, album
+ORDER BY seguidores DESC, artista, album;
